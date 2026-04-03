@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Developer Portfolio</title>
+  <meta name="description" content="시스템 개발 10년 × AI/CV 실전 구축. 어떤 문제든 풀어냅니다.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --bg-2: #f8fafc;
+      --bg-3: #f1f5f9;
+      --text: #0f172a;
+      --text-2: #475569;
+      --text-3: #94a3b8;
+      --blue: #2563eb;
+      --blue-dark: #1d4ed8;
+      --blue-light: #eff6ff;
+      --blue-mid: #dbeafe;
+      --indigo: #6366f1;
+      --border: #e2e8f0;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.07), 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.1);
+      --r: 12px;
+      --r-lg: 18px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Noto Sans KR', 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.75rem;
+    }
+
+    .section {
+      padding: 88px 0;
+    }
+
+    .sec-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .sec-title {
+      font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+      font-weight: 800;
+      margin-bottom: 0.65rem;
+      letter-spacing: -0.03em;
+    }
+
+    .sec-sub {
+      color: var(--text-2);
+      font-size: 0.95rem;
+    }
+
+    .sec-head {
+      margin-bottom: 3rem;
+    }
+
+    /* NAV */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, box-shadow .3s;
+      padding: 1rem 0;
+    }
+
+    #nav.on {
+      border-color: var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .nav-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-weight: 900;
+      font-size: 1.15rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.04em;
+    }
+
+    .nav-logo em {
+      color: var(--blue);
+      font-style: normal;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-btn {
+      background: var(--blue);
+      color: #fff;
+      padding: .45rem 1.1rem;
+      border-radius: 8px;
+      font-size: .85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+
+    .nav-btn:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 100px 0 60px;
+      background: linear-gradient(150deg, #f8fafc 0%, #eff6ff 55%, #eef2ff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: -10%;
+      right: -5%;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(99, 102, 241, .07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+
+    .hero-inner {
+      flex: 1;
+      max-width: 620px;
+    }
+
+    .hero-visual {
+      flex: 1;
+      max-width: 420px;
+      height: 420px;
+      position: relative;
+      display: none;
+    }
+
+    @media (min-width: 900px) {
+      .hero-visual {
+        display: block;
+      }
+    }
+
+    .v-card {
+      position: absolute;
+      border-radius: var(--r-lg);
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 1);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+      padding: 1.4rem;
+    }
+
+    .v-code {
+      top: 5%;
+      right: 5%;
+      width: 260px;
+      z-index: 2;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .v-vision {
+      bottom: 15%;
+      left: 0%;
+      width: 220px;
+      z-index: 3;
+      animation: float 7s ease-in-out infinite reverse;
+    }
+
+    .v-map {
+      top: 35%;
+      right: -15%;
+      width: 230px;
+      z-index: 1;
+      animation: float 8s ease-in-out infinite 1s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    .v-header {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .v-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e2e8f0;
+    }
+
+    .v-dot:nth-child(1) {
+      background: #ef4444;
+    }
+
+    .v-dot:nth-child(2) {
+      background: #eab308;
+    }
+
+    .v-dot:nth-child(3) {
+      background: #22c55e;
+    }
+
+    .v-lines {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .v-line {
+      height: 10px;
+      border-radius: 5px;
+      background: #e2e8f0;
+      width: 100%;
+    }
+
+    .v-line.blue {
+      background: var(--blue);
+      width: 70%;
+    }
+
+    .v-line.short {
+      width: 40%;
+    }
+
+    .v-line.mid {
+      width: 85%;
+    }
+
+    .v-title {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .v-box {
+      height: 60px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+    }
+
+    .v-grid-wrap {
+      height: 80px;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+
+    .v-grid {
+      position: absolute;
+      inset: -30px;
+      background-image: linear-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.1) 1px, transparent 1px);
+      background-size: 15px 15px;
+      transform: perspective(200px) rotateX(55deg);
+      transform-origin: center bottom;
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid rgba(37, 99, 235, .2);
+      padding: .32rem .9rem;
+      border-radius: 100px;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-bottom: 1.4rem;
+      letter-spacing: .02em;
+    }
+
+    .hero-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .4;
+        transform: scale(.8);
+      }
+    }
+
+    .hero-h1 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.25;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-h1 .line2 {
+      color: var(--blue);
+    }
+
+    .hero-sub {
+      list-style: none;
+      margin-bottom: 2.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .hero-sub li {
+      font-size: clamp(.95rem, 1.1vw, 1.05rem);
+      color: var(--text-2);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .hero-sub li::before {
+      content: '✓';
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 1.05rem;
+      margin-top: 1px;
+    }
+
+    .hero-sub strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .btn-p {
+      background: var(--blue);
+      color: #fff;
+      padding: .8rem 1.85rem;
+      border-radius: var(--r);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .9rem;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, .3);
+      transition: all .2s;
+    }
+
+    .btn-p:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, .4);
+    }
+
+    .btn-s {
+      background: #fff;
+      color: var(--text);
+      padding: .8rem 1.85rem;
+      border-radius: var(--r);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .9rem;
+      border: 1.5px solid var(--border);
+      transition: all .2s;
+    }
+
+    .btn-s:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-n {
+      font-size: 1.9rem;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-l {
+      font-size: .78rem;
+      color: var(--text-3);
+      margin-top: .15rem;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .scroll-cue span {
+      font-size: .68rem;
+      letter-spacing: .12em;
+      color: var(--text-3);
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--text-3), transparent);
+      animation: lineDown 2s infinite;
+    }
+
+    @keyframes lineDown {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scaleY(1);
+      }
+
+      50% {
+        opacity: .3;
+        transform: scaleY(.5);
+      }
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--bg);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    .about-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.75rem;
+      position: sticky;
+      top: 88px;
+    }
+
+    .about-ava {
+      width: 62px;
+      height: 62px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: .85rem;
+    }
+
+    .about-ava img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .about-nm {
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .about-nm-en {
+      font-size: .75rem;
+      color: var(--text-3);
+      margin-bottom: .3rem;
+    }
+
+    .about-job {
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--blue);
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      margin-bottom: 1.3rem;
+    }
+
+    .ainfo {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      padding: .48rem 0;
+      border-top: 1px solid var(--border);
+      font-size: .8rem;
+      color: var(--text-2);
+    }
+
+    .ainfo a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .ainfo a:hover {
+      text-decoration: underline;
+    }
+
+    .about-body p {
+      font-size: .95rem;
+      color: var(--text-2);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-body p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .about-body strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .kw-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: 1.5rem;
+    }
+
+    .kw {
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid var(--blue-mid);
+      padding: .28rem .8rem;
+      border-radius: 100px;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+
+    /* SKILLS */
+    #skills {
+      background: var(--bg-2);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.1rem;
+    }
+
+    .skill-cat {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.4rem;
+      box-shadow: var(--shadow);
+    }
+
+    .skill-cat.featured {
+      border-color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .skill-cat-lbl {
+      font-size: .68rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+    }
+
+    .skill-cat.featured .skill-cat-lbl {
+      color: var(--blue);
+    }
+
+    .skill-cat-lbl::before {
+      content: '';
+      width: 16px;
+      height: 2.5px;
+      background: currentColor;
+      border-radius: 2px;
+    }
+
+    .skill-row {
+      margin-bottom: .8rem;
+    }
+
+    .skill-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: .3rem;
+    }
+
+    .skill-nm {
+      font-size: .85rem;
+      font-weight: 600;
+    }
+
+    .skill-yr {
+      font-size: .7rem;
+      color: var(--text-3);
+    }
+
+    .skill-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+
+    .skill-fill {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--blue), var(--indigo));
+      border-radius: 100px;
+      transition: width 1.4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    /* CAREER */
+    #career {
+      background: var(--bg);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 0;
+      max-width: 680px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      transform: translateX(-50%);
+      top: 8px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--border));
+      border-radius: 2px;
+    }
+
+    .tl-item {
+      position: relative;
+      padding-left: 48px;
+      padding-bottom: 2.75rem;
+      opacity: 0;
+      transform: translateX(-14px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-item.on {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .tl-dot {
+      position: absolute;
+      left: 14px;
+      transform: translateX(-50%);
+      top: 4px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2.5px solid var(--bg);
+      box-shadow: 0 0 0 2px var(--blue);
+    }
+
+    .tl-dot.current {
+      background: #22c55e;
+      box-shadow: 0 0 0 2px #22c55e;
+    }
+
+    .tl-period {
+      display: inline-block;
+      font-size: .72rem;
+      color: var(--text-3);
+      font-weight: 500;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      padding: .18rem .65rem;
+      border-radius: 100px;
+      margin-bottom: .45rem;
+    }
+
+    .tl-company {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: .15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .tl-role {
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--blue);
+      margin-bottom: .6rem;
+    }
+
+    .tl-desc {
+      font-size: .88rem;
+      color: var(--text-2);
+      line-height: 1.75;
+    }
+
+    .tl-item--break .tl-dot {
+      background: var(--text-3);
+      box-shadow: 0 0 0 2px var(--text-3);
+    }
+
+    .tl-item--break .tl-company {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--text-3);
+    }
+
+    .tl-item--break .tl-role {
+      color: var(--text-3);
+      font-weight: 500;
+    }
+
+    .tl-item--break .tl-desc {
+      font-size: .83rem;
+      opacity: .7;
+    }
+
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+      margin-top: .7rem;
+    }
+
+    .tag-sm {
+      background: var(--bg-2);
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: .16rem .55rem;
+      border-radius: 5px;
+      font-size: .7rem;
+      font-weight: 600;
+    }
+
+    /* PROJECTS */
+    #projects {
+      background: var(--bg-2);
+    }
+
+    .proj-filter {
+      display: flex;
+      gap: .45rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .filt {
+      padding: .38rem 1rem;
+      border-radius: 100px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--text-2);
+      cursor: pointer;
+      transition: all .2s;
+      font-family: inherit;
+    }
+
+    .filt.on,
+    .filt:hover {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue);
+    }
+
+    .proj-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .proj-card {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+
+
+    /* Project image */
+    .proj-img-wrap {
+      position: relative;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--bg-3) 0%, var(--blue-mid) 100%);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .proj-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .proj-img-ph {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .4rem;
+      color: var(--text-3);
+      font-size: .72rem;
+      letter-spacing: .05em;
+      pointer-events: none;
+    }
+
+    .proj-img-ph-ico {
+      font-size: 2rem;
+      opacity: .35;
+    }
+
+    .proj-img-ph-txt {
+      opacity: .5;
+      font-weight: 500;
+      font-size: .68rem;
+    }
+
+    .proj-top {
+      padding: 1.2rem 1.4rem .9rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .proj-type {
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .3rem;
+    }
+
+    .proj-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: .15rem;
+    }
+
+    .proj-period {
+      font-size: .75rem;
+      color: var(--text-3);
+    }
+
+    .proj-body {
+      padding: 1.1rem 1.4rem;
+    }
+
+    .proj-body::before {
+      content: '개요';
+      display: block;
+      font-size: .67rem;
+      font-weight: 800;
+      letter-spacing: .1em;
+      color: var(--text-3);
+      margin-bottom: .6rem;
+    }
+
+    .proj-desc {
+      font-size: .85rem;
+      color: var(--text-2);
+      line-height: 1.72;
+      margin-bottom: .85rem;
+    }
+
+    .tech-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .32rem;
+      margin-bottom: .8rem;
+    }
+
+    .tech {
+      background: var(--bg-2);
+      color: var(--text-2);
+      border: 1px solid var(--border);
+      padding: .15rem .55rem;
+      border-radius: 5px;
+      font-size: .7rem;
+      font-weight: 600;
+    }
+
+    .proj-role {
+      font-size: .75rem;
+      color: var(--text-3);
+    }
+
+    .proj-role strong {
+      color: var(--blue);
+    }
+
+    .exp-btn {
+      display: none !important;
+      width: 100%;
+      padding: .62rem 1.4rem;
+      background: none;
+      border: none;
+      border-top: 1px solid var(--border);
+      cursor: pointer;
+      font-size: .78rem;
+      color: var(--blue);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .35rem;
+      font-family: inherit;
+      transition: background .2s;
+    }
+
+    .exp-btn:hover {
+      background: var(--blue-light);
+    }
+
+    .exp-arrow {
+      font-size: .6rem;
+      transition: transform .3s;
+    }
+
+    .exp-btn.on .exp-arrow {
+      transform: rotate(180deg);
+    }
+
+    .exp-body {
+      display: block !important;
+      padding: 1.1rem 1.4rem;
+      background: transparent;
+      border-top: none;
+    }
+
+    .exp-body.on {
+      display: block;
+    }
+
+    .exp-section {
+      margin-bottom: .9rem;
+    }
+
+    .exp-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .exp-lbl {
+      font-size: .67rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--text-3);
+      margin-bottom: .5rem;
+    }
+
+    .exp-ul {
+      list-style: none;
+    }
+
+    .exp-ul li {
+      font-size: .83rem;
+      color: var(--text-2);
+      padding: .2rem 0 .2rem 1rem;
+      position: relative;
+      line-height: 1.65;
+    }
+
+    .exp-ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .proj-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      margin-top: .6rem;
+      color: var(--blue);
+      font-size: .8rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .proj-link:hover {
+      text-decoration: underline;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--bg);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .cinfo-item {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      padding: 1rem 1.15rem;
+      border-radius: var(--r);
+      border: 1px solid var(--border);
+      background: var(--bg);
+      text-decoration: none;
+      color: var(--text);
+      transition: all .2s;
+      margin-bottom: .75rem;
+    }
+
+    .cinfo-item:hover {
+      border-color: var(--blue);
+      box-shadow: var(--shadow-md);
+      transform: translateX(4px);
+    }
+
+    .cinfo-ico {
+      width: 40px;
+      height: 40px;
+      background: var(--blue-light);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .cinfo-lbl {
+      font-size: .7rem;
+      color: var(--text-3);
+    }
+
+    .cinfo-val {
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    .contact-cta {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--indigo) 100%);
+      border-radius: var(--r-lg);
+      padding: 2.25rem;
+      color: #fff;
+    }
+
+    .contact-cta h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: .6rem;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+    .contact-cta p {
+      opacity: .85;
+      font-size: .9rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #fff;
+      color: var(--blue);
+      padding: .78rem 1.8rem;
+      border-radius: var(--r);
+      text-decoration: none;
+      font-weight: 800;
+      font-size: .9rem;
+      transition: transform .2s, box-shadow .2s;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .15);
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, .2);
+    }
+
+    footer {
+      background: var(--text);
+      color: rgba(255, 255, 255, .4);
+      text-align: center;
+      padding: 2.25rem 1rem;
+      font-size: .8rem;
+    }
+
+    footer strong {
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .fi {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .fi.on {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 860px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-card {
+        position: static;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* Fixed Desktop Layout Options */
+    @media (min-width: 861px) {
+      .proj-card {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        grid-template-areas:
+          "img body"
+          "top exp";
+        align-items: start;
+        background: var(--bg-2);
+      }
+
+      .proj-img-wrap {
+        grid-area: img;
+        height: auto;
+        width: 100%;
+        aspect-ratio: 16/9;
+      }
+
+      .proj-top {
+        grid-area: top;
+        border: none !important;
+        padding: 1.5rem;
+        background: transparent;
+      }
+
+      .proj-top .proj-name {
+        font-size: 1.3rem;
+        line-height: 1.35;
+        margin-bottom: 0.5rem;
+      }
+
+      .proj-top .proj-type {
+        font-size: 0.75rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .proj-body {
+        grid-area: body;
+        padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+        background: var(--bg);
+        align-self: stretch;
+      }
+
+      .exp-body {
+        grid-area: exp;
+        border-top: 1px solid var(--border) !important;
+        border-right: none !important;
+        border-bottom: none !important;
+        border-left: none !important;
+        padding: 1.2rem 1.5rem 1.5rem 1.5rem;
+        background: var(--bg);
+        align-self: stretch;
+      }
+
+      .proj-img {
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-stats {
+        gap: 1.75rem;
+      }
+
+      .proj-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section {
+        padding: 60px 0;
+      }
+    }
+
+    /* Image Modal (Lightbox) */
+    .img-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      cursor: zoom-out;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .img-modal.on {
+      display: flex;
+      opacity: 1;
+    }
+
+    .img-modal img {
+      max-width: 90%;
+      max-height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .img-modal.on img {
+      transform: scale(1);
+    }
+
+    .proj-img-wrap {
+      cursor: zoom-in;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Image Modal Container -->
+  <div id="imgModal" class="img-modal" onclick="closeModal()">
+    <img id="modalImg" src="" alt="Enlarged view">
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-wrap">
+      <a href="#hero" class="nav-logo">Developer Portfolio<em>.</em></a>
+      <ul class="nav-links">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#skills">스킬</a></li>
+        <li><a href="#career">경력</a></li>
+        <li><a href="#projects">프로젝트</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+      <a href="mailto:whdals0119@naver.com" class="nav-btn">연락하기</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container hero-container">
+      <div class="hero-inner">
+
+        <h1 class="hero-h1">
+          시스템 개발 경력 11년<br>
+          <span class="line2">× AI·비전 파이프라인</span>
+        </h1>
+        <ul class="hero-sub">
+          <li><strong>VMS 시스템 개발</strong> <span>C++ 기반 대규모 영상 관제 시스템 개발</span></li>
+          <li><strong>AI·CV 파이프라인</strong> <span>객체 트래킹 및 정밀 맵투영 시스템 전체 설계 및 구축</span></li>
+          <li><strong>End-to-End</strong> <span>레거시 모듈 연동부터 AI 추론 서버까지 전장 커버</span></li>
+        </ul>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-p">프로젝트 보기</a>
+          <a href="#contact" class="btn-s">연락하기</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-n">11</div>
+            <div class="stat-l">년 실무 경력</div>
+          </div>
+          <div>
+            <div class="stat-n">VMS</div>
+            <div class="stat-l">영상보안 코어</div>
+          </div>
+          <div>
+            <div class="stat-n">CV</div>
+            <div class="stat-l">영상처리·맵투영</div>
+          </div>
+          <div>
+            <div class="stat-n">E2E</div>
+            <div class="stat-l">설계부터 배포까지</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Animated Decoration Generator -->
+      <div class="hero-visual">
+        <div class="v-card v-code">
+          <div class="v-header">
+            <div class="v-dot"></div>
+            <div class="v-dot"></div>
+            <div class="v-dot"></div>
+          </div>
+          <div class="v-lines">
+            <div class="v-line"></div>
+            <div class="v-line short"></div>
+            <div class="v-line blue"></div>
+            <div class="v-line mid"></div>
+          </div>
+        </div>
+        <div class="v-card v-vision">
+          <div class="v-title">VMS Core Arc.</div>
+          <div class="v-box"></div>
+        </div>
+        <div class="v-card v-map">
+          <div class="v-title">Map Projection</div>
+          <div class="v-grid-wrap">
+            <div class="v-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="sec-head fi">
+        <div class="sec-label">About</div>
+        <h2 class="sec-title">최종민입니다</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card fi">
+          <div class="about-ava"><img src="img/devis.jpg" alt="프로필 사진"></div>
+          <div class="about-nm">최종민</div>
+          <div class="about-nm-en">Choi Jong Min</div>
+          <div class="about-job">영상 · AI 개발자</div>
+          <div class="ainfo">
+            <span>📧</span>
+            <a href="mailto:whdals0119@naver.com">whdals0119@naver.com</a>
+          </div>
+          <div class="ainfo">
+            <span>🐱</span>
+            <a href="https://github.com/jjongmae" target="_blank">github.com/jjongmae</a>
+          </div>
+          <div class="ainfo">
+            <span>📍</span>
+            <span>대한민국</span>
+          </div>
+        </div>
+        <div class="about-body fi">
+          <p>
+            <strong>영상 도메인 전문가</strong>입니다. CCTV 관제 시스템부터 이기종 카메라 연동, 스트리밍 파이프라인까지 11년간 현장에서 다뤄온 경험 위에, YOLO·트래킹·Zero-Shot 검출·VLM, 그리고 HD Map 투영·좌표 역투영까지 AI 비전 기술 전반을 직접 실전에 녹여냈습니다.
+          </p>
+          <p>
+            신조는 <strong>Simple is Best, Just do it</strong> 입니다. 11년간 현장에서 마주한 수많은 에러들은 대부분 복잡한 설계와 복잡한 구현이 쌓인 데서 나왔습니다. 아키텍처든 코드든 제품이든, 단순하게 만든 것들이 결합될 때 비로소 단단해진다고 믿습니다. 너무 오래 고민하기보다 일단 만들고, 부딪히며 다듬는 것이 더 빠르고 더 나은 결과로 이어진다는 것도 경험으로 배웠습니다.
+          </p>
+          <p>
+            세상을 바꿀 만한 제품, 시장에서 살아남는 제품을 만들고 싶습니다. 뛰어난 동료들과 부딪히고 배우며 함께 성장할 수 있는 팀이라면 — 망설임 없이 합류하겠습니다.
+          </p>
+          <div class="kw-list">
+            <span class="kw">영상 도메인 전문가</span>
+            <span class="kw">Simple is Best</span>
+            <span class="kw">집요한 문제 해결력</span>
+            <span class="kw">타협 없는 프로덕트 품질</span>
+            <span class="kw">End-to-End 시스템 설계</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section">
+    <div class="container">
+      <div class="sec-head fi">
+        <div class="sec-label">Skills</div>
+        <h2 class="sec-title">기술 스택</h2>
+        <p class="sec-sub">실무에서 직접 써온 기술들입니다.</p>
+      </div>
+      <div class="skills-grid fi" id="skills-grid">
+        <div class="skill-cat featured">
+          <div class="skill-cat-lbl">AI / Computer Vision</div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Python</span><span class="skill-yr">1년+</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="60"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">YOLO · RT-DETR / BotSORT</span><span
+                class="skill-yr">검출·트래킹</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="65"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">GroundingDINO</span><span class="skill-yr">Zero-Shot
+                검출</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="60"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">OpenCV / GStreamer</span><span class="skill-yr">영상 처리</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="60"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">PyTorch / ONNX</span><span class="skill-yr">딥러닝 추론</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="52"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">VLM (Ovis)</span><span class="skill-yr">이벤트/상황 판단</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="58"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">NVIDIA Triton Server</span><span class="skill-yr">추론
+                서버</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="48"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-lbl">Backend / Web</div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">C++ / MFC / Boost</span><span class="skill-yr">6년+</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="92"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Node.js</span><span class="skill-yr">4년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="76"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">React</span><span class="skill-yr">2년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="52"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Docker</span><span class="skill-yr">2년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="55"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-lbl">Database</div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">MariaDB / MySQL</span><span class="skill-yr">6년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="88"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">MS-SQL</span><span class="skill-yr">3년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="65"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">PostgreSQL</span><span class="skill-yr">3년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="65"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Redis</span><span class="skill-yr">2년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="55"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-lbl">Tools / Infra</div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Git</span><span class="skill-yr">8년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="95"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Linux / Windows Server</span><span class="skill-yr">6년</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="72"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Redmine / Jira</span><span class="skill-yr">7년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="80"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">WebSocket / REST API</span><span class="skill-yr">4년</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="80"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAREER -->
+  <section id="career" class="section">
+    <div class="container">
+      <div class="sec-head fi">
+        <div class="sec-label">Career</div>
+        <h2 class="sec-title">경력 <span id="totalCareer" style="font-size:0.75rem;font-weight:500;color:var(--text-2);letter-spacing:0;vertical-align:middle;"></span></h2>
+      </div>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-dot current"></div>
+          <span class="tl-period">2025.03 — 현재</span>
+          <div class="tl-company">유원지리정보시스템</div>
+          <div class="tl-role">도로영상분석 시스템 개발 (책임연구원)</div>
+          <div class="tl-desc">자율주행 인프라 구축 및 도로 이상상황 판단 과제 수행. CCTV 영상에 HD Map을 융합하는 캘리브레이션 파이프라인부터 YOLO·VLM 기반 실시간 이상
+            이벤트 감지 시스템까지 전체 AI 파이프라인을 직접 설계·구현.</div>
+          <div class="tl-tags">
+            <span class="tag-sm">Python</span><span class="tag-sm">YOLO</span><span class="tag-sm">BotSORT</span><span
+              class="tag-sm">PyTorch</span><span class="tag-sm">GroundingDINO</span><span
+              class="tag-sm">VLM(Ovis)</span><span class="tag-sm">OpenCV</span><span class="tag-sm">Triton</span><span
+              class="tag-sm">Docker</span><span class="tag-sm">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="tl-period">2024.08 — 2024.12 · 5개월</span>
+          <div class="tl-company">휴맥스아이티</div>
+          <div class="tl-role">법무관리 시스템 개발 (프리랜서)</div>
+          <div class="tl-desc">기업용 법무관리 SaaS 개발 참여. 레거시 React 코드베이스를 빠르게 분석 후 독립적으로 기능 개발 착수.</div>
+          <div class="tl-tags">
+            <span class="tag-sm">Node.js</span><span class="tag-sm">React</span><span class="tag-sm">MySQL</span>
+          </div>
+        </div>
+
+        <div class="tl-item tl-item--break">
+          <div class="tl-dot"></div>
+          <span class="tl-period">2024.01 — 2024.07 · 7개월</span>
+          <div class="tl-company">휴식</div>
+          <div class="tl-role">자기계발 · 토이프로젝트 · 여행</div>
+          <div class="tl-desc">8년 6개월간의 이노뎁 생활을 마치고 의도적으로 가진 휴식기. 독서와 공부, 여행으로 재충전하는 한편, 개인 프로젝트 CONNN(웹 음성채팅 서비스)을 혼자 기획부터 배포까지 완성했습니다.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="tl-period">2015.07 — 2023.12 · 8년 6개월</span>
+          <div class="tl-company">이노뎁</div>
+          <div class="tl-role">VMS 솔루션 개발 (사원 → 책임)</div>
+          <div class="tl-desc">영상 감시 솔루션(TYBIS·VURIX) 핵심 제품 개발 및 다양한 지자체 프로젝트 수행. 이기종 장비 연동 드라이버 설계, 전국 관제 현장에서 발생하는 무수한
+            크리티컬 에러(장애) 트러블슈팅 및 플랫폼 안정화,
+            표준 API 설계·배포, 개발 리딩 및 Scrum Master 역할까지 담당.</div>
+          <div class="tl-tags">
+            <span class="tag-sm">C++</span><span class="tag-sm">Node.js</span><span class="tag-sm">React</span><span
+              class="tag-sm">Java Spring</span><span class="tag-sm">MariaDB</span><span class="tag-sm">Redis</span>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <span class="tl-period">2014.02 — 2015.04 · 1년 3개월</span>
+          <div class="tl-company">콤스텍</div>
+          <div class="tl-role">해군 납품용 소프트웨어 개발 (사원)</div>
+          <div class="tl-desc">해군 납품용 국방 소프트웨어 개발 참여를 통해 실무 개발 환경과 시스템 아키텍처 베이스 구현 능력을 다진 첫 직장.</div>
+          <div class="tl-tags">
+            <span class="tag-sm">C++</span><span class="tag-sm">System Arc.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="sec-head fi">
+        <div class="sec-label">Projects</div>
+        <h2 class="sec-title">프로젝트</h2>
+      </div>
+      <div class="proj-filter fi">
+        <button class="filt on" data-f="all">전체 (8)</button>
+        <button class="filt" data-f="ai">AI / 자율주행</button>
+        <button class="filt" data-f="sys">서버 / 시스템</button>
+        <button class="filt" data-f="personal">개인 프로젝트</button>
+      </div>
+      <div class="proj-grid">
+
+        <!-- 1. 유원지리정보시스템 -->
+        <div class="proj-card fi" data-cat="ai">
+          <div class="proj-img-wrap">
+            <img src="img/p-ai-road.jpg" alt="CCTV 도로 AI 분석 화면" class="proj-img" onerror="this.style.display='none'">
+            <div class="proj-img-ph">
+              <div class="proj-img-ph-ico">🛣️</div>
+              <div class="proj-img-ph-txt">img/p-ai-road.jpg</div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-type">유원지리정보시스템</div>
+            <div class="proj-name">자율주행 인프라 구축 · 도로 이상상황 판단</div>
+            <div class="proj-period">2025.03 — 현재</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">CCTV 영상 + HD Map 융합 기반 실시간 도로 이상상황 감지 시스템. 객체 검출·트래킹·역투영·VLM 검증까지 End-to-End AI 파이프라인을
+              직접 구축</p>
+            <div class="tech-wrap">
+              <span class="tech">Python</span><span class="tech">YOLO</span><span class="tech">RT-DETR</span><span
+                class="tech">BotSORT</span><span class="tech">GroundingDINO</span><span class="tech">PyTorch</span><span
+                class="tech">OpenCV</span><span class="tech">GStreamer</span><span class="tech">Triton</span><span
+                class="tech">VLM(Ovis)</span><span class="tech">Docker</span><span class="tech">React</span><span
+                class="tech">PyQt</span>
+            </div>
+            <div class="proj-role">역할: <strong>AI/CV 파이프라인 설계·구현</strong></div>
+          </div>
+          <button class="exp-btn" onclick="toggle(this)">기술 상세 <span class="exp-arrow">▼</span></button>
+          <div class="exp-body">
+            <div class="exp-section">
+              <div class="exp-lbl">핵심 기여</div>
+              <ul class="exp-ul">
+                <li><strong>1인 E2E 개발:</strong> 영상 수신부터 HD Map 투영, 객체 역투영, 속도·이상 이벤트 계산, 웹 표출까지 전체를 혼자 설계·구현. 타 팀 기준 4명·6개월 규모의 작업을 1인·6개월에 개발</li>
+                <li><strong>자동 맵 매칭:</strong> CCTV 영상에 도로 정밀 HD Map을 투영 — 카메라 내·외부 파라미터 자동 산출 및 자동 맵매칭으로 수작업 의존도 제거</li>
+                <li><strong>실시간 이벤트 판단:</strong> YOLO·RT-DETR 모델로 차량·보행자 실시간 검출 + BotSORT 기반 멀티 오브젝트 트래킹 → 역투영 변환(IPM)으로
+                  픽셀 좌표를 실세계 좌표로 변환, 속도·역주행·정지 이벤트 자동 판단
+                </li>
+                <li><strong>비정형 객체 검지:</strong> GroundingDINO(Zero-Shot Detector)를 활용해 사전 학습 데이터 없이 낙하물·라바콘 등 비정형 도로 이상
+                  객체 검지</li>
+                <li><strong>VLM 기반 검증:</strong> VLM(Ovis) 모델 오프라인 로컬 환경 구축 및 추론을 통한 자연어 기반 2차 이벤트 검증 — 오경보 감소 파이프라인 구현
+                </li>
+                <li><strong>추론 서버 구성:</strong> NVIDIA Triton Inference Server 기반 추론 서버 구성, GStreamer로 다중 채널 영상 스트리밍
+                  파이프라인 처리</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. VURIX -->
+        <div class="proj-card fi" data-cat="sys">
+          <div class="proj-img-wrap">
+            <img src="img/p-vurix.jpg" alt="VURIX 영상 감시 솔루션 화면" class="proj-img" onerror="this.style.display='none'">
+            <div class="proj-img-ph">
+              <div class="proj-img-ph-ico">📹</div>
+              <div class="proj-img-ph-txt">img/p-vurix.jpg</div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-type">이노뎁 · 영상 감시 솔루션 (핵심 제품)</div>
+            <div class="proj-name">VURIX</div>
+            <div class="proj-period">2018.01 — 2024.12</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">이노뎁의 2세대 영상 감시 플랫폼. 제조사별 카메라 및 서드파티 시스템을 통합 관리하며, 대규모 사이트의 실시간 영상 스트리밍과 시스템 안정성을 확보하는 엔터프라이즈급 솔루션</p>
+            <div class="tech-wrap">
+              <span class="tech">C++</span><span class="tech">Boost</span><span class="tech">WPF</span><span
+                class="tech">MariaDB</span><span class="tech">Redis</span><span class="tech">Windows/Linux</span>
+            </div>
+            <div class="proj-role">역할: <strong>Server 개발 (주임)</strong></div>
+          </div>
+          <button class="exp-btn" onclick="toggle(this)">기술 상세 <span class="exp-arrow">▼</span></button>
+          <div class="exp-body">
+            <div class="exp-section">
+              <div class="exp-lbl">핵심 기여</div>
+              <ul class="exp-ul">
+                <li><strong>이기종 카메라 플랫폼 연동:</strong> 수많은 제조사별 IP 카메라 및 IoT 장비 대응을 위한 프로토콜 추상화 레이어 설계 및 통합 연동 기반 구축</li>
+                <li><strong>서드파티 시스템 통합:</strong> 타사 VMS, 외부 주차장 시스템, AI 분석 서버 등 이기종 시스템 간의 데이터 인터페이스 파이프라인 설계 및 개발</li>
+                <li><strong>현장 트러블슈팅 및 안정화:</strong> 대형 사이트에서 발생한 치명적인 녹화 오작동 이슈를 HTTP cURL 기반 우회 로직으로 즉각 대응하여 대규모 납품 계약 방어</li>
+                <li><strong>보안 감사 시스템 구축:</strong> 플랫폼 고도화 요구에 맞춰 '사용자 행위 이력 로그 시스템'을 신규 구축하여 보안 트래킹 및 감사(Audit) 기반 제공</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. 주차통합관제 -->
+        <div class="proj-card fi" data-cat="sys">
+          <div class="proj-img-wrap">
+            <img src="img/p-parking.jpg" alt="주차통합관제 화면" class="proj-img" onerror="this.style.display='none'">
+            <div class="proj-img-ph">
+              <div class="proj-img-ph-ico">🅿️</div>
+              <div class="proj-img-ph-txt">img/p-parking.jpg</div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-type">이노뎁 · 지자체 프로젝트</div>
+            <div class="proj-name">주차통합관제</div>
+            <div class="proj-period">2020.01 — 2022.06</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">파편화된 다수의 공영 주차장을 하나로 통합 관리하는 대규모 관제 시스템. 입출차 이벤트와 CCTV 다채널 영상을 실시간으로 매칭하여 통합 모니터링 환경 제공</p>
+            <div class="tech-wrap">
+              <span class="tech">Node.js</span><span class="tech">C++</span><span class="tech">React</span><span
+                class="tech">MariaDB</span><span class="tech">WebSocket</span>
+            </div>
+            <div class="proj-role">역할: <strong>Server 개발 파트 리딩 (책임)</strong></div>
+          </div>
+          <button class="exp-btn" onclick="toggle(this)">기술 상세 <span class="exp-arrow">▼</span></button>
+          <div class="exp-body">
+            <div class="exp-section">
+              <div class="exp-lbl">핵심 기여</div>
+              <ul class="exp-ul">
+                <li><strong>개발 파트 리딩 및 아키텍처 설계:</strong> 2인 개발 팀의 리더로서 전체 백엔드 시스템 설계 및 일정 관리 총괄, 탁월한 리딩 성과로 조기 진급 달성</li>
+                <li><strong>VMS-주차 융합 코어 시스템 구축:</strong> 자사 영상 처리 기술과 주차 로직을 융합하여, 차량 이벤트 시점의 CCTV 다채널 녹화 영상을 즉각 표출하는 '영상 연동형 주차 관제' 기능 구현</li>
+                <li><strong>표준 API 설계 및 프로토콜 통일:</strong> 이기종 주차장 데이터 통합을 위한 표준 API(HTTP/WebSocket) 설계 및 배포, 다수의 외부 장비 업체와 현장 연동 총괄</li>
+                <li><strong>풀스택 역량 기반 UI 개발:</strong> React를 활용한 통합 관리자 설정 웹 인터페이스 단독 개발로 프론트엔드 영역까지 기술 범위 확장</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. 주차미납관리 -->
+        <div class="proj-card fi" data-cat="sys">
+          <div class="proj-img-wrap">
+            <img src="img/p-unpaid.jpg" alt="주차미납관리 시스템 화면" class="proj-img" onerror="this.style.display='none'">
+            <div class="proj-img-ph">
+              <div class="proj-img-ph-ico">📋</div>
+              <div class="proj-img-ph-txt">img/p-unpaid.jpg</div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-type">이노뎁 · 지자체 프로젝트</div>
+            <div class="proj-name">주차미납관리</div>
+            <div class="proj-period">2022.07 — 2022.12</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">공영 주차장 미납 요금 수집부터 모바일 고지, 가상계좌 수납까지 전 과정을 처리하는 자동화 시스템. 애자일 방법론 기반의 팀 운영을 통해 효율적인 개발 사이클 구축</p>
+            <div class="tech-wrap">
+              <span class="tech">Node.js</span><span class="tech">React</span><span class="tech">Electron</span><span
+                class="tech">PostgreSQL</span>
+            </div>
+            <div class="proj-role">역할: <strong>Server 개발 + Scrum Master (책임)</strong></div>
+          </div>
+          <button class="exp-btn" onclick="toggle(this)">기술 상세 <span class="exp-arrow">▼</span></button>
+          <div class="exp-body">
+            <div class="exp-section">
+              <div class="exp-lbl">핵심 기여</div>
+              <ul class="exp-ul">
+                <li><strong>스크럼 마스터 및 팀 생산성 관리:</strong> 데일리 스크럼 주도 및 기술적 허들 해결로 팀 생산성 극대화, 리스크 관리 중심의 애자일 리딩으로 적기 납품 달성</li>
+                <li><strong>결제 파이프라인 및 비즈니스 로직 구현:</strong> 토스 페이먼츠 연동 및 결제 웹훅 처리, 전자 고지서 발행으로 이어지는 서비스 핵심 비즈니스 로직 설계 및 구현</li>
+                <li><strong>커뮤니케이션 허브 및 현장 안정화:</strong> 기획-개발 가교 역할 수행 및 현장 실증을 통한 돌발 이슈 선제적 대응 및 시스템 안정화 주도</li>
+                <li><strong>크로스 플랫폼 서비스 배포:</strong> Node.js/React 기반 코드베이스를 Electron으로 패키징하여 웹과 데스크톱 앱의 유지보수 효율성 제고</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- 5. Law.ai -->
+        <div class="proj-card fi" data-cat="sys">
+          <div class="proj-img-wrap">
+            <img src="img/p-lawai.jpg" alt="Law.ai 법무관리 시스템 화면" class="proj-img" onerror="this.style.display='none'">
+            <div class="proj-img-ph">
+              <div class="proj-img-ph-ico">⚖️</div>
+              <div class="proj-img-ph-txt">img/p-lawai.jpg</div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-type">휴맥스 아이티 · 웹 서비스</div>
+            <div class="proj-name">Law.ai</div>
+            <div class="proj-period">2024.08 — 2024.12</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">기업용 웹기반 법무관리 SaaS. 레거시 코드베이스에 빠르게 적응해 독립적으로 기능 개발을 수행한 프리랜서 프로젝트</p>
+            <div class="tech-wrap">
+              <span class="tech">Node.js</span><span class="tech">React</span><span class="tech">MySQL</span><span
+                class="tech">Linux</span>
+            </div>
+            <div class="proj-role">역할: <strong>Backend + Frontend (풀스택)</strong></div>
+          </div>
+          <button class="exp-btn" onclick="toggle(this)">기술 상세 <span class="exp-arrow">▼</span></button>
+          <div class="exp-body">
+            <div class="exp-section">
+              <div class="exp-lbl">핵심 기여</div>
+              <ul class="exp-ul">
+                <li><strong>레거시 온보딩:</strong> 기존 대규모 React 레거시 코드베이스를 온보딩 1주 내 파악, 독립적으로 기능 개발 착수</li>
+                <li><strong>풀스택 구현:</strong> 시스템 메일 템플릿·표준계약서 관리 기능을 백엔드·프론트엔드 모두 설계 및 구현</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. CONNN -->
+        <div class="proj-card fi" data-cat="personal">
+          <div class="proj-img-wrap">
+            <img src="img/p-connn.jpg" alt="CONNN 웹 음성채팅 화면" class="proj-img" onerror="this.style.display='none'">
+            <div class="proj-img-ph">
+              <div class="proj-img-ph-ico">🎙️</div>
+              <div class="proj-img-ph-txt">img/p-connn.jpg</div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-type">🌟 개인 프로젝트</div>
+            <div class="proj-name">CONNN — 웹 음성채팅 서비스</div>
+            <div class="proj-period">2024.03 — 2024.07</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">개인적인 기술 역량 확장과 '게임 유저 간의 실시간 랜선 네트워킹'이라는 순수 흥미로 기획부터 배포까지 단독 구현한 웹 음성채팅 서비스. 클라우드 비용 효율화를 위한 인프라 고민과 CI/CD 경험을 쌓은 핵심 토이 프로젝트</p>
+            <div class="tech-wrap">
+              <span class="tech">Node.js</span><span class="tech">React</span><span class="tech">WebRTC</span><span
+                class="tech">MariaDB</span><span class="tech">Linux</span><span class="tech">GitHub Actions</span>
+            </div>
+            <div class="proj-role">역할: <strong>기획 · Backend · Frontend (1인 개발)</strong></div>
+          </div>
+          <button class="exp-btn" onclick="toggle(this)">기술 상세 <span class="exp-arrow">▼</span></button>
+          <div class="exp-body">
+            <div class="exp-section">
+              <div class="exp-lbl">핵심 기여</div>
+              <ul class="exp-ul">
+                <li><strong>WebRTC P2P 기반 통신 최적화:</strong> 개인 서버(클라우드)의 네트워크 트래픽 과금과 부하를 최소화하기 위해 중앙 서버를 생략하고 클라이언트(Peer) 간에 직접 음성 데이터를 교환하는 WebRTC P2P 아키텍처 설계 및 구현</li>
+                <li><strong>CI/CD 자동 배포 파이프라인:</strong> GitHub Actions를 도입하여, git 레포지토리에 소스코드가 푸시되면 클라우드 서버에 바로 반영되는 무중단 자동 배포 파이프라인 단독 구축</li>
+                <li><strong>풀스택 서비스 런칭 및 운영:</strong> 가비아 클라우드 서버 렌탈, 외부 도메인 연결 설정부터 Node.js/React 기반의 웹 서비스 풀스택 개발까지 1인 사이드 프로젝트의 A-Z 전체 사이클 주도적 경험</li>
+              </ul>
+            </div>
+            <a href="https://github.com/jjongmae/connn-app" target="_blank" class="proj-link">🐱 GitHub →</a>
+          </div>
+        </div>
+
+        <!-- 7. 둔치주차장 -->
+        <div class="proj-card fi" data-cat="sys">
+          <div class="proj-img-wrap">
+            <img src="img/p-dunchi.jpg" alt="둔치주차장 침수 알림 시스템 화면" class="proj-img" onerror="this.style.display='none'">
+            <div class="proj-img-ph">
+              <div class="proj-img-ph-ico">🚨</div>
+              <div class="proj-img-ph-txt">img/p-dunchi.jpg</div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-type">이노뎁 · 지자체 프로젝트</div>
+            <div class="proj-name">둔치주차장 침수 알림 시스템</div>
+            <div class="proj-period">2020.01 — 2020.12</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">태풍·홍수 경보 시 하천 변 둔치주차장의 침수 위험을 실시간 감지하여 차주에게 자동 SMS를 발송하고, 차단기·전광판·스피커를 원격 제어해 차량 피해를 예방하는 지자체 긴급 알림 시스템</p>
+            <div class="tech-wrap">
+              <span class="tech">C++</span><span class="tech">Node.js</span><span class="tech">WPF</span><span
+                class="tech">MariaDB</span>
+            </div>
+            <div class="proj-role">역할: <strong>Server 개발 (선임)</strong></div>
+          </div>
+          <button class="exp-btn" onclick="toggle(this)">기술 상세 <span class="exp-arrow">▼</span></button>
+          <div class="exp-body">
+            <div class="exp-section">
+              <div class="exp-lbl">핵심 기여</div>
+              <ul class="exp-ul">
+                <li><strong>폐쇄망 연동 및 망 분리 대응:</strong> 지자체 폐쇄망 환경 내에서 외부망(보험개발원, SMS API)과 통신하기 위한 보안 가이드라인 준수 및 연동망 구성 설계</li>
+                <li><strong>차량 정보 조회 및 알림 자동화 파이프라인:</strong> LPR(차량번호 인식) 데이터 기반 보험개발원 연동(차량번호→전화번호 조회) 및 SMS 발송까지 이어지는 전체 비즈니스 로직 및 파이프라인 설계 및 핵심 로직 구현</li>
+                <li><strong>LPR 및 제어 통합:</strong> LPR 연동 표준 API 개발 + 차단기·전광판·스피커 제어 통합</li>
+                <li><strong>통신 안정성 튜닝:</strong> 잦은 장비 재접속 환경에서 안정적인 통신 재접속 로직 설계</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. TYBIS -->
+        <div class="proj-card fi" data-cat="sys">
+          <div class="proj-img-wrap">
+            <img src="img/p-tybis.jpg" alt="TYBIS 영상 감시 솔루션 화면" class="proj-img" onerror="this.style.display='none'">
+            <div class="proj-img-ph">
+              <div class="proj-img-ph-ico">🎥</div>
+              <div class="proj-img-ph-txt">img/p-tybis.jpg</div>
+            </div>
+          </div>
+          <div class="proj-top">
+            <div class="proj-type">이노뎁 · 영상 감시 솔루션</div>
+            <div class="proj-name">TYBIS</div>
+            <div class="proj-period">2015.07 — 2017.12</div>
+          </div>
+          <div class="proj-body">
+            <p class="proj-desc">대규모 영상 관제 인프라를 위한 C++ 기반 1세대 VMS(Video Management System) 솔루션. 다양한 제조사의 IP 카메라 및 보안 장비를 하나의 플랫폼에서 통합 관리하고 실시간 영상 스트리밍 및 녹화 데이터를 처리하는 시스템</p>
+            <div class="tech-wrap">
+              <span class="tech">C++</span><span class="tech">MFC</span><span class="tech">RTSP</span><span
+                class="tech">SDK/API Integration</span><span class="tech">MS-SQL</span>
+            </div>
+            <div class="proj-role">역할: <strong>Server 개발 (사원)</strong></div>
+          </div>
+          <button class="exp-btn" onclick="toggle(this)">기술 상세 <span class="exp-arrow">▼</span></button>
+          <div class="exp-body">
+            <div class="exp-section">
+              <div class="exp-lbl">핵심 기여</div>
+              <ul class="exp-ul">
+                <li><strong>이기종 카메라 드라이버 통합 개발:</strong> RTSP 프로토콜 및 제조사별 SDK/API를 분석하여 수십 종의 IP 카메라 및 인코더 드라이버 설계 및 연동</li>
+                <li><strong>C++ 서버 안정화 및 메모리 최적화:</strong> 멀티스레드 환경에서의 레이스 컨디션(Race Condition), 크리티컬 섹션 미흡으로 인한 참조 오류 등 복잡한 동시성 이슈 해결</li>
+                <li><strong>집요한 현장 트러블슈팅:</strong> 전국 관제 현장의 돌발적인 서버 다운 이슈에 대응하여, 덤프 파일 분석 및 정밀 로그 추적을 통해 메모리 누수(Memory Leak)와 크리티컬 버그를 근본적으로 해결</li>
+                <li><strong>실전 기반의 디버깅 역량 확보:</strong> 런타임 에러 분석 및 시스템 리소스 모니터링을 통해 대규모 영상 스트리밍 환경에서의 시스템 가용성 극대화</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="sec-head fi">
+        <div class="sec-label">Contact</div>
+        <h2 class="sec-title">연락 주세요</h2>
+      </div>
+      <div class="contact-grid fi">
+        <div>
+          <a href="mailto:whdals0119@naver.com" class="cinfo-item">
+            <div class="cinfo-ico">📧</div>
+            <div>
+              <div class="cinfo-lbl">이메일</div>
+              <div class="cinfo-val">whdals0119@naver.com</div>
+            </div>
+          </a>
+          <a href="https://github.com/jjongmae" target="_blank" class="cinfo-item">
+            <div class="cinfo-ico">🐱</div>
+            <div>
+              <div class="cinfo-lbl">GitHub</div>
+              <div class="cinfo-val">github.com/jjongmae</div>
+            </div>
+          </a>
+        </div>
+        <div class="contact-cta">
+          <h3>3개월이면 충분합니다</h3>
+          <p>어떻게 일하는 사람인지는 같이 일을 해보면 압니다.<br>후회하지 않으실 거라 자신합니다.</p>
+          <a href="mailto:whdals0119@naver.com" class="cta-btn">이메일 보내기 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>최종민 · Choi Jong Min</strong><br>
+    <span style="opacity:.5;font-size:.75rem;margin-top:.25rem;display:block;">© 2026. All rights reserved.</span>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('on', scrollY > 40), { passive: true });
+
+    // Fade-in observer
+    const fiObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); fiObs.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.fi').forEach(el => fiObs.observe(el));
+
+    // Skill bars
+    let skillsDone = false;
+    const skillObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !skillsDone) {
+        skillsDone = true;
+        document.querySelectorAll('.skill-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 80 + i * 55);
+        });
+      }
+    }, { threshold: 0.2 });
+    const sg = document.getElementById('skills-grid');
+    if (sg) skillObs.observe(sg);
+
+    // Timeline stagger
+    const tlItems = document.querySelectorAll('.tl-item');
+    const tlObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const i = [...tlItems].indexOf(e.target);
+          setTimeout(() => e.target.classList.add('on'), i * 160);
+          tlObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    tlItems.forEach(el => tlObs.observe(el));
+
+    // Expand toggle
+    function toggle(btn) {
+      const body = btn.nextElementSibling;
+      const isOpen = body.classList.toggle('on');
+      btn.classList.toggle('on', isOpen);
+      btn.firstChild.textContent = isOpen ? '접기 ' : '기술 상세 ';
+    }
+
+    // Image Modal
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImg');
+
+    function openModal(src) {
+      if (!src || src.includes('undefined')) return;
+      modalImg.src = src;
+      modal.classList.add('on');
+      document.body.style.overflow = 'hidden'; // 스크롤 방지
+    }
+
+    function closeModal() {
+      modal.classList.remove('on');
+      document.body.style.overflow = '';
+      setTimeout(() => { modalImg.src = ''; }, 300);
+    }
+
+    // 모든 프로젝트 이미지에 클릭 이벤트 연결
+    document.querySelectorAll('.proj-img-wrap').forEach(wrap => {
+      wrap.addEventListener('click', () => {
+        const img = wrap.querySelector('.proj-img');
+        if (img && img.style.display !== 'none') {
+          openModal(img.src);
+        }
+      });
+    });
+
+    // ESC 키로 모달 닫기
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // 총경력 계산 (각 직장 기간 합산)
+    (function () {
+      const periods = [
+        { start: [2014, 2], end: [2015, 4] },   // 콤스텍
+        { start: [2015, 7], end: [2023, 12] },  // 이노뎁
+        { start: [2024, 8], end: [2024, 12] },  // 휴맥스아이티
+        { start: [2025, 3], end: null },         // 유원지리정보시스템 (현재)
+      ];
+      const now = new Date();
+      let totalMonths = 0;
+      periods.forEach(({ start, end }) => {
+        const endY = end ? end[0] : now.getFullYear();
+        const endM = end ? end[1] : now.getMonth() + 1;
+        totalMonths += (endY - start[0]) * 12 + (endM - start[1]) + 1;
+      });
+      const years = Math.floor(totalMonths / 12);
+      const months = totalMonths % 12;
+      const label = months > 0 ? `총 ${years}년 ${months}개월` : `총 ${years}년`;
+      document.getElementById('totalCareer').textContent = label;
+    })();
+
+    // Filter
+    document.querySelectorAll('.filt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filt').forEach(b => b.classList.remove('on'));
+        btn.classList.add('on');
+        const f = btn.dataset.f;
+        document.querySelectorAll('.proj-card').forEach(c => {
+          c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
