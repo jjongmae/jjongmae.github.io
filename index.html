@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Developer Portfolio</title>
-  <meta name="description" content="시스템 개발 12년 × AI/CV 실전 구축. 어떤 문제든 풀어냅니다.">
+  <meta name="description" content="시스템 개발 11년 × AI 실전 구축. 어떤 문제든 풀어냅니다.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700;800&display=swap"
@@ -50,6 +50,7 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      word-break: keep-all;
     }
 
     .container {
@@ -189,7 +190,7 @@
     .hero-container {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       gap: 3rem;
       position: relative;
       z-index: 1;
@@ -201,149 +202,100 @@
       max-width: 620px;
     }
 
-    .hero-visual {
-      flex: 1;
-      max-width: 420px;
-      height: 420px;
+    .hero-shots {
       position: relative;
+      flex: 1;
+      max-width: 460px;
+      height: 380px;
       display: none;
     }
 
     @media (min-width: 900px) {
-      .hero-visual {
+      .hero-shots {
         display: block;
       }
     }
 
-    .v-card {
+    .hshot {
       position: absolute;
-      border-radius: var(--r-lg);
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 1);
-      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-      padding: 1.4rem;
-    }
-
-    .v-code {
-      top: 5%;
-      right: 5%;
-      width: 260px;
-      z-index: 2;
-      animation: float 6s ease-in-out infinite;
-    }
-
-    .v-vision {
-      bottom: 15%;
-      left: 0%;
-      width: 220px;
-      z-index: 3;
-      animation: float 7s ease-in-out infinite reverse;
-    }
-
-    .v-map {
-      top: 35%;
-      right: -15%;
-      width: 230px;
-      z-index: 1;
-      animation: float 8s ease-in-out infinite 1s;
-    }
-
-    @keyframes float {
-
-      0%,
-      100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-12px);
-      }
-    }
-
-    .v-header {
-      display: flex;
-      gap: 6px;
-      margin-bottom: 16px;
-    }
-
-    .v-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #e2e8f0;
-    }
-
-    .v-dot:nth-child(1) {
-      background: #ef4444;
-    }
-
-    .v-dot:nth-child(2) {
-      background: #eab308;
-    }
-
-    .v-dot:nth-child(3) {
-      background: #22c55e;
-    }
-
-    .v-lines {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .v-line {
-      height: 10px;
-      border-radius: 5px;
-      background: #e2e8f0;
-      width: 100%;
-    }
-
-    .v-line.blue {
-      background: var(--blue);
-      width: 70%;
-    }
-
-    .v-line.short {
-      width: 40%;
-    }
-
-    .v-line.mid {
-      width: 85%;
-    }
-
-    .v-title {
-      font-size: 0.8rem;
-      font-weight: 800;
-      color: var(--blue);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .v-box {
-      height: 60px;
-      border-radius: 8px;
-      background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
-    }
-
-    .v-grid-wrap {
-      height: 80px;
-      border-radius: 8px;
+      border-radius: var(--r);
       overflow: hidden;
-      position: relative;
-      background: #fff;
+      box-shadow: var(--shadow-lg);
       border: 1px solid var(--border);
+      transition: transform .25s ease, box-shadow .25s ease;
     }
 
-    .v-grid {
+    .hshot:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 48px rgba(15, 23, 42, .18);
+      z-index: 3;
+    }
+
+    .hshot img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hshot-tag {
       position: absolute;
-      inset: -30px;
-      background-image: linear-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 99, 235, 0.1) 1px, transparent 1px);
-      background-size: 15px 15px;
-      transform: perspective(200px) rotateX(55deg);
-      transform-origin: center bottom;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(15, 23, 42, .82);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .02em;
+      padding: .25rem .7rem;
+      border-radius: 100px;
+    }
+
+    .hshot-claude {
+      width: 360px;
+      height: 202px;
+      top: 0;
+      right: 0;
+      z-index: 2;
+    }
+
+    .hshot-gemini {
+      width: 330px;
+      height: 185px;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .hero-sub {
+      list-style: none;
+      margin-bottom: 2.2rem;
+      display: grid;
+      grid-template-columns: auto auto 1fr;
+      align-items: start;
+      row-gap: 0.8rem;
+      column-gap: 0.5rem;
+    }
+
+    .hero-sub li {
+      display: contents;
+      font-size: clamp(.95rem, 1.1vw, 1.05rem);
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+
+    .hero-sub li::before {
+      content: '✓';
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 1.05rem;
+      margin-top: 1px;
+    }
+
+    .hero-sub strong {
+      color: var(--text);
+      font-weight: 700;
+      white-space: nowrap;
     }
 
     .hero-pill {
@@ -384,7 +336,7 @@
     }
 
     .hero-h1 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(1.7rem, 2.2vw, 2.3rem);
       font-weight: 900;
       line-height: 1.25;
       letter-spacing: -0.04em;
@@ -395,35 +347,6 @@
       color: var(--blue);
     }
 
-    .hero-sub {
-      list-style: none;
-      margin-bottom: 2.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .hero-sub li {
-      font-size: clamp(.95rem, 1.1vw, 1.05rem);
-      color: var(--text-2);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      line-height: 1.5;
-    }
-
-    .hero-sub li::before {
-      content: '✓';
-      color: var(--blue);
-      font-weight: 900;
-      font-size: 1.05rem;
-      margin-top: 1px;
-    }
-
-    .hero-sub strong {
-      color: var(--text);
-      font-weight: 700;
-    }
 
     .hero-btns {
       display: flex;
@@ -1406,13 +1329,13 @@
       <div class="hero-inner">
 
         <h1 class="hero-h1">
-          시스템 개발 경력 12년<br>
-          <span class="line2">× AI·비전 파이프라인</span>
+          AI 활용과 11년의 경험을 무기로<br>
+          <span class="line2">어떤 문제든 풀어냅니다</span>
         </h1>
         <ul class="hero-sub">
-          <li><strong>VMS 시스템 개발</strong> <span>C++ 기반 대규모 영상 관제 시스템 개발</span></li>
-          <li><strong>AI·CV 파이프라인</strong> <span>객체 트래킹 및 정밀 맵투영 시스템 전체 설계 및 구축</span></li>
-          <li><strong>End-to-End</strong> <span>레거시 모듈 연동부터 AI 추론 서버까지 전장 커버</span></li>
+          <li><strong>AI 네이티브</strong> <span>Claude·Gemini를 실전 무기로 낯선 도메인을 빠르게 흡수하고 바로 결과물로 전환</span></li>
+          <li><strong>입증된 실행력</strong> <span>회사가 4인·6개월로 산정한 AI 비전 과제를 1인·6개월 만에 A부터 Z까지 완성</span></li>
+          <li><strong>시스템 개발 내공</strong> <span>11년간 대규모 실시간 영상 데이터를 다뤄온 백엔드 경험이 새 도메인 학습의 단단한 기반</span></li>
         </ul>
         <div class="hero-btns">
           <a href="#projects" class="btn-p">프로젝트 보기</a>
@@ -1420,16 +1343,12 @@
         </div>
         <div class="hero-stats">
           <div>
-            <div class="stat-n">12</div>
+            <div class="stat-n">11</div>
             <div class="stat-l">년 실무 경력</div>
           </div>
           <div>
-            <div class="stat-n">VMS</div>
-            <div class="stat-l">영상보안 코어</div>
-          </div>
-          <div>
-            <div class="stat-n">CV</div>
-            <div class="stat-l">영상처리·맵투영</div>
+            <div class="stat-n">4+</div>
+            <div class="stat-l">AI 도구 실전 활용</div>
           </div>
           <div>
             <div class="stat-n">E2E</div>
@@ -1438,30 +1357,14 @@
         </div>
       </div>
 
-      <!-- Animated Decoration Generator -->
-      <div class="hero-visual">
-        <div class="v-card v-code">
-          <div class="v-header">
-            <div class="v-dot"></div>
-            <div class="v-dot"></div>
-            <div class="v-dot"></div>
-          </div>
-          <div class="v-lines">
-            <div class="v-line"></div>
-            <div class="v-line short"></div>
-            <div class="v-line blue"></div>
-            <div class="v-line mid"></div>
-          </div>
+      <div class="hero-shots">
+        <div class="hshot hshot-claude">
+          <img src="img/claude.jpg" alt="Claude Code 터미널 세션">
+          <span class="hshot-tag">Claude Code</span>
         </div>
-        <div class="v-card v-vision">
-          <div class="v-title">VMS Core Arc.</div>
-          <div class="v-box"></div>
-        </div>
-        <div class="v-card v-map">
-          <div class="v-title">Map Projection</div>
-          <div class="v-grid-wrap">
-            <div class="v-grid"></div>
-          </div>
+        <div class="hshot hshot-gemini">
+          <img src="img/gemini.jpg" alt="Gemini Antigravity CLI 세션">
+          <span class="hshot-tag">Gemini</span>
         </div>
       </div>
     </div>
@@ -1476,13 +1379,13 @@
     <div class="container">
       <div class="sec-head fi">
         <div class="sec-label">About</div>
-        <h2 class="sec-title">12년차 영상 · AI 엔지니어</h2>
+        <h2 class="sec-title">11년차 영상 · AI 엔지니어</h2>
       </div>
       <div class="about-grid">
         <div class="about-card fi">
           <div class="about-nm">최종민</div>
           <div class="about-nm-en">Choi Jong Min</div>
-          <div class="about-job">영상 · AI 개발자</div>
+          <div class="about-job">AI 네이티브 개발자</div>
           <div class="ainfo">
             <span>📧</span>
             <a href="mailto:whdals0119@naver.com">whdals0119@naver.com</a>
@@ -1498,20 +1401,33 @@
         </div>
         <div class="about-body fi">
           <p>
-            <strong>영상 도메인 전문가</strong>입니다. CCTV 관제 시스템부터 이기종 카메라 연동, 스트리밍 파이프라인까지 12년간 현장에서 다뤄온 경험 위에, YOLO·트래킹·Zero-Shot 검출·VLM, 그리고 HD Map 투영·좌표 역투영까지 AI 비전 기술 전반을 직접 실전에 녹여냈습니다.
+            <strong>AI 도구를 무기로 어떤 도메인이든 빠르게 학습해 결과물로 만들어내는 개발자</strong>입니다.
           </p>
           <p>
-            신조는 <strong>Simple is Best, Just do it</strong> 입니다. 12년간 현장에서 마주한 수많은 에러들은 대부분 복잡한 설계와 복잡한 구현이 쌓인 데서 나왔습니다. 아키텍처든 코드든 제품이든, 단순하게 만든 것들이 결합될 때 비로소 단단해진다고 믿습니다. 너무 오래 고민하기보다 일단 만들고, 부딪히며 다듬는 것이 더 빠르고 더 나은 결과로 이어진다는 것도 경험으로 배웠습니다.
+            안식년 동안 Cursor AI를 활용해 음성채팅 서비스를 기획부터 배포까지 혼자 완성했습니다. 이 경험을 발판 삼아 React 실무 경험이 부족한 상태로 프리랜서 계약에 투입됐지만, 이번에도 <strong>Cursor AI로 낯선 코드베이스를 빠르게 파악</strong>하며 맡은 업무를 무리 없이 해냈고, 그 결과 계약 연장 제안까지 받았습니다.
           </p>
           <p>
-            <strong>개발의 본질은 결국 비즈니스 가치 창출에 있다고 믿습니다.</strong> 단순히 주어진 코드를 작성하는 것을 넘어 주도적으로 문제를 해결해 온 결과, 이노뎁 재직 당시 <strong>우수사원 표창과 책임 연구원 조기 진급</strong>을 달성하며 그 성과를 인정받았습니다. 더 나아가 프로덕트와 시장의 관점에서 시스템을 고민한 끝에, 사내 <strong>비즈니스 모델(BM) 공모전에서 1위</strong>를 수상하며 기술과 비즈니스를 융합하는 시각을 증명했습니다.
+            지금 회사에서도 마찬가지였습니다. 컴퓨터 비전 지식이 전혀 없는 상태로 입사했지만 <strong>Claude Code를 실전 무기 삼아 도메인 지식을 빠르게 흡수</strong>했고, 그 결과 회사가 4인·6개월 규모로 산정했던 AI 비전 과제를 혼자 6개월 만에 설계부터 온프레미스 배포까지 완료했습니다.
           </p>
           <p>
-            세상을 바꿀 만한 제품, 시장에서 살아남는 제품을 만들고 싶습니다. 뛰어난 동료들과 부딪히고 배우며 함께 성장할 수 있는 팀이라면 — 망설임 없이 합류하겠습니다.
+            이 활용 능력은 코딩에만 그치지 않습니다. <strong>Claude를 협업 파트너로 기획·문서화·프로젝트 관리 전 과정에 상시 활용</strong>하여, 요구사항 정리부터 WBS·일정 관리 문서, 기술 문서화까지 개발과 관리 업무 전반의 산출물 품질과 속도를 함께 끌어올립니다.
+          </p>
+          <p>
+            이 실행력의 바탕에는 <strong>11년간 대규모 실시간 영상 데이터를 다뤄온 시스템 개발 경험</strong>이 있습니다. CCTV 관제 시스템, 이기종 카메라 연동, 대용량 스트리밍 파이프라인까지, 데이터 규모와 실시간성이 요구하는 복잡도를 다뤄본 경험은 어떤 새 도메인을 만나도 구조를 빠르게 파악하는 기반이 됩니다.
+          </p>
+          <p>
+            신조는 <strong>Simple is Best, Just do it</strong> 입니다. 너무 오래 고민하기보다 AI 도구로 빠르게 만들고, 부딪히며 다듬는 탑다운 학습 방식이 더 빠르고 더 나은 결과로 이어진다는 것을 반복적으로 증명해왔습니다. 11년간 현장에서 마주한 수많은 에러들도 대부분 복잡한 설계가 쌓인 데서 나왔기에, 단순하게 만든 것들이 결합될 때 비로소 단단해진다고 믿습니다.
+          </p>
+          <p>
+            <strong>개발의 본질은 결국 비즈니스 가치 창출에 있다고 믿습니다.</strong> 단순히 주어진 코드를 작성하는 것을 넘어 주도적으로 문제를 해결해 온 결과, 이노뎁 재직 당시 <strong>우수사원 표창과 책임 연구원 조기 진급</strong>을 달성했고, 사내 <strong>비즈니스 모델(BM) 공모전에서 1위</strong>를 수상하며 기술과 비즈니스를 융합하는 시각을 증명했습니다.
+          </p>
+          <p>
+            세상을 바꿀 만한 제품, 시장에서 살아남는 제품을 만들고 싶습니다. 뛰어난 동료들과 부딪히고 배우며 함께 성장할 수 있는 팀이라면, 망설임 없이 합류하겠습니다.
           </p>
           <div class="kw-list">
-            <span class="kw">영상 도메인 전문가</span>
-            <span class="kw">End-to-End 시스템 설계</span>
+            <span class="kw">AI 네이티브 개발</span>
+            <span class="kw">초고속 도메인 학습</span>
+            <span class="kw">End-to-End 실행력</span>
             <span class="kw">Simple is Best</span>
             <span class="kw">Just do it</span>
           </div>
@@ -1530,6 +1446,33 @@
       </div>
       <div class="skills-grid fi" id="skills-grid">
         <div class="skill-cat featured">
+          <div class="skill-cat-lbl">AI 협업 도구</div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Claude Code</span><span class="skill-yr">주력</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="95"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Claude 코워크<br>(기획·문서화·WBS 등)</span><span class="skill-yr">주력</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="90"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Gemini</span><span class="skill-yr">활용중</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="80"></div>
+            </div>
+          </div>
+          <div class="skill-row">
+            <div class="skill-info"><span class="skill-nm">Cursor AI</span><span class="skill-yr">1.5년</span></div>
+            <div class="skill-bar">
+              <div class="skill-fill" data-w="90"></div>
+            </div>
+          </div>
+        </div>
+        <div class="skill-cat">
           <div class="skill-cat-lbl">AI / Computer Vision</div>
           <div class="skill-row">
             <div class="skill-info"><span class="skill-nm">YOLO / BotSORT</span><span class="skill-yr">1년</span></div>
@@ -1680,10 +1623,10 @@
 
         <div class="tl-item">
           <div class="tl-dot current"></div>
-          <span class="tl-period">2025.03 — 현재</span>
+          <span class="tl-period">2025.03 ~ 현재</span>
           <div class="tl-company">유원지리정보시스템</div>
           <div class="tl-role">도로영상분석 시스템 개발 (책임연구원)</div>
-          <div class="tl-desc">자율주행 인프라 구축 및 도로 이상상황 판단 과제 수행. CCTV 영상에 HD Map을 융합하는 캘리브레이션 파이프라인부터 YOLO·VLM 기반 실시간 이상
+          <div class="tl-desc">컴퓨터 비전 도메인 지식이 전무한 상태로 입사, <strong>Claude Code</strong>를 실전 무기로 삼아 도메인 지식을 빠르게 흡수하며 자율주행 인프라 구축 및 도로 이상상황 판단 과제 수행. CCTV 영상에 HD Map을 융합하는 캘리브레이션 파이프라인부터 YOLO·VLM 기반 실시간 이상
             이벤트 감지 시스템까지 전체 AI 파이프라인을 직접 설계·구현.</div>
           <div class="tl-tags">
             <span class="tag-sm">Python</span><span class="tag-sm">YOLO</span><span class="tag-sm">BotSORT</span><span
@@ -1695,10 +1638,10 @@
 
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <span class="tl-period">2024.08 — 2024.12 · 5개월</span>
+          <span class="tl-period">2024.08 ~ 2024.12 · 5개월</span>
           <div class="tl-company">휴맥스아이티</div>
           <div class="tl-role">법무관리 시스템 개발 (프리랜서)</div>
-          <div class="tl-desc">기업용 법무관리 SaaS 개발 참여. 레거시 React 코드베이스를 빠르게 분석 후 독립적으로 기능 개발 착수.</div>
+          <div class="tl-desc">React 실무 경험이 부족한 상태로 투입, <strong>Cursor AI</strong>를 적극 활용해 레거시 코드베이스를 빠르게 분석하고 독립적으로 기능 개발 착수. 성과를 인정받아 계약 연장 제안을 받았음.</div>
           <div class="tl-tags">
             <span class="tag-sm">Node.js</span><span class="tag-sm">React</span><span class="tag-sm">MySQL</span>
           </div>
@@ -1706,15 +1649,15 @@
 
         <div class="tl-item tl-item--break">
           <div class="tl-dot"></div>
-          <span class="tl-period">2024.01 — 2024.07 · 7개월</span>
+          <span class="tl-period">2024.01 ~ 2024.07 · 7개월</span>
           <div class="tl-company">휴식</div>
           <div class="tl-role">자기계발 · 토이프로젝트 · 여행</div>
-          <div class="tl-desc">8년 6개월간의 이노뎁 생활을 마치고 의도적으로 가진 휴식기. 독서와 공부, 여행으로 재충전하는 한편, 개인 프로젝트 CONNN(웹 음성채팅 서비스)을 혼자 기획부터 배포까지 완성했습니다.</div>
+          <div class="tl-desc">8년 6개월간의 이노뎁 생활을 마치고 의도적으로 가진 휴식기. 독서와 공부, 여행으로 재충전하는 한편, <strong>Cursor AI</strong>를 적극 활용해 개인 프로젝트 CONNN(웹 음성채팅 서비스)의 백엔드·프론트엔드부터 클라우드 배포, 도메인 구입까지 3~4개월 만에 혼자 기획부터 배포까지 완성했습니다.</div>
         </div>
 
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <span class="tl-period">2015.07 — 2023.12 · 8년 6개월</span>
+          <span class="tl-period">2015.07 ~ 2023.12 · 8년 6개월</span>
           <div class="tl-company">이노뎁</div>
           <div class="tl-role">VMS 솔루션 개발 (사원 → 책임)</div>
           <div class="tl-desc">
@@ -1735,7 +1678,7 @@
 
         <div class="tl-item">
           <div class="tl-dot"></div>
-          <span class="tl-period">2014.02 — 2015.04 · 1년 3개월</span>
+          <span class="tl-period">2014.02 ~ 2015.04 · 1년 3개월</span>
           <div class="tl-company">콤스텍</div>
           <div class="tl-role">해군 납품용 소프트웨어 개발 (사원)</div>
           <div class="tl-desc">해군 납품용 국방 소프트웨어 개발 참여를 통해 실무 개발 환경과 시스템 아키텍처 베이스 구현 능력을 다진 첫 직장.</div>
@@ -1775,11 +1718,10 @@
           <div class="proj-top">
             <div class="proj-type">유원지리정보시스템</div>
             <div class="proj-name">자율주행 인프라 구축 · 도로 이상상황 판단</div>
-            <div class="proj-period">2025.03 — 현재</div>
+            <div class="proj-period">2025.03 ~ 현재</div>
           </div>
           <div class="proj-body">
-            <p class="proj-desc">CCTV 영상 + HD Map 융합 기반 실시간 도로 이상상황 감지 시스템. 객체 검출·트래킹·역투영·VLM 검증까지 End-to-End AI 파이프라인을
-              직접 구축</p>
+            <p class="proj-desc">비전 도메인 지식 전무 상태에서 <strong>Claude Code</strong>로 빠르게 학습하며 CCTV 영상 + HD Map 융합 기반 실시간 도로 이상상황 감지 시스템을 End-to-End로 구축. 객체 검출·트래킹·역투영·VLM 검증까지 전체 AI 파이프라인 직접 구현</p>
             <div class="tech-wrap">
               <span class="tech">Python</span><span class="tech">YOLO</span><span class="tech">RT-DETR</span><span
                 class="tech">BotSORT</span><span class="tech">GroundingDINO</span><span class="tech">PyTorch</span><span
@@ -1794,14 +1736,14 @@
             <div class="exp-section">
               <div class="exp-lbl">핵심 기여</div>
               <ul class="exp-ul">
-                <li><strong>1인 E2E 개발:</strong> 영상 수신부터 HD Map 투영, 객체 역투영, 속도·이상 이벤트 계산, 웹 표출까지 전체를 혼자 설계·구현. 타 팀 기준 4명·6개월 규모의 작업을 1인·6개월에 개발</li>
+                <li><strong>AI 도구 기반 초고속 도메인 습득 및 1인 E2E 개발:</strong> 정밀도로지도 투영·역투영, YOLO·Zero-Shot·VLM 등 사전 지식이 전무한 상태에서 <strong>Claude Code</strong>를 활용해 도메인 지식을 빠르게 흡수하며, 영상 수신부터 HD Map 투영, 객체 역투영, 속도·이상 이벤트 계산, 웹 표출까지 전체를 혼자 설계·구현. 타 팀 기준 4명·6개월 규모의 작업을 1인·6개월에 개발</li>
                 <li><strong>동적 PTZ 카메라 자동 맵매칭 기술 성공:</strong> 기존 고정형 카메라 환경의 한계를 넘어, 회전 및 줌(Pan-Tilt-Zoom)에 의해 화각이 지속적으로 변하는 PTZ 카메라 환경에서도 정밀 HD Map 매칭과 카메라 파라미터 자동 산출을 실시간으로 유지하는 기술을 자체 연구 및 구현</li>
                 <li><strong>실시간 이벤트 판단:</strong> YOLO·RT-DETR 모델로 차량·보행자 실시간 검출 + BotSORT 기반 멀티 오브젝트 트래킹 → 역투영 변환(IPM)으로
                   픽셀 좌표를 실세계 좌표로 변환, 속도·역주행·정지 이벤트 자동 판단
                 </li>
                 <li><strong>비정형 객체 검지:</strong> GroundingDINO(Zero-Shot Detector)를 활용해 사전 학습 데이터 없이 낙하물·라바콘 등 비정형 도로 이상
                   객체 검지</li>
-                <li><strong>VLM 기반 검증:</strong> VLM(Ovis) 모델 오프라인 로컬 환경 구축 및 추론을 통한 자연어 기반 2차 이벤트 검증 — 오경보 감소 파이프라인 구현
+                <li><strong>VLM 기반 검증:</strong> VLM(Ovis) 모델 오프라인 로컬 환경 구축 및 추론을 통한 자연어 기반 2차 이벤트 검증으로 오경보 감소 파이프라인 구현
                 </li>
                 <li><strong>추론 서버 구성:</strong> NVIDIA Triton Inference Server 기반 추론 서버 구성, GStreamer로 다중 채널 영상 스트리밍
                   파이프라인 처리</li>
@@ -1822,7 +1764,7 @@
           <div class="proj-top">
             <div class="proj-type">이노뎁 · 영상 감시 솔루션 (핵심 제품)</div>
             <div class="proj-name">VURIX</div>
-            <div class="proj-period">2018.01 — 2024.12</div>
+            <div class="proj-period">2018.01 ~ 2024.12</div>
           </div>
           <div class="proj-body">
             <p class="proj-desc">이노뎁의 2세대 영상 감시 플랫폼. 제조사별 카메라 및 서드파티 시스템을 통합 관리하며, 대규모 사이트의 실시간 영상 스트리밍과 시스템 안정성을 확보하는 엔터프라이즈급 솔루션</p>
@@ -1858,7 +1800,7 @@
           <div class="proj-top">
             <div class="proj-type">이노뎁 · 지자체 프로젝트</div>
             <div class="proj-name">주차통합관제</div>
-            <div class="proj-period">2020.01 — 2022.06</div>
+            <div class="proj-period">2020.01 ~ 2022.06</div>
           </div>
           <div class="proj-body">
             <p class="proj-desc">파편화된 다수의 공영 주차장을 하나로 통합 관리하는 대규모 관제 시스템. 입출차 이벤트와 CCTV 다채널 영상을 실시간으로 매칭하여 통합 모니터링 환경 제공</p>
@@ -1895,7 +1837,7 @@
           <div class="proj-top">
             <div class="proj-type">이노뎁 · 지자체 프로젝트</div>
             <div class="proj-name">주차미납관리</div>
-            <div class="proj-period">2022.07 — 2022.12</div>
+            <div class="proj-period">2022.07 ~ 2022.12</div>
           </div>
           <div class="proj-body">
             <p class="proj-desc">공영 주차장 미납 요금 수집부터 모바일 고지, 가상계좌 수납까지 전 과정을 처리하는 자동화 시스템. 애자일 방법론 기반의 팀 운영을 통해 효율적인 개발 사이클 구축</p>
@@ -1932,10 +1874,10 @@
           <div class="proj-top">
             <div class="proj-type">휴맥스 아이티 · 웹 서비스</div>
             <div class="proj-name">Law.ai</div>
-            <div class="proj-period">2024.08 — 2024.12</div>
+            <div class="proj-period">2024.08 ~ 2024.12</div>
           </div>
           <div class="proj-body">
-            <p class="proj-desc">기업용 웹기반 법무관리 SaaS. 레거시 코드베이스에 빠르게 적응해 독립적으로 기능 개발을 수행한 프리랜서 프로젝트</p>
+            <p class="proj-desc">기업용 웹기반 법무관리 SaaS. React 실무 경험이 부족했지만 <strong>Cursor AI</strong>로 레거시 코드베이스에 빠르게 적응해 독립적으로 기능 개발을 수행, 연장계약 제안을 받은 프리랜서 프로젝트</p>
             <div class="tech-wrap">
               <span class="tech">Node.js</span><span class="tech">React</span><span class="tech">MySQL</span><span
                 class="tech">Linux</span>
@@ -1947,7 +1889,7 @@
             <div class="exp-section">
               <div class="exp-lbl">핵심 기여</div>
               <ul class="exp-ul">
-                <li><strong>레거시 온보딩:</strong> 기존 대규모 React 레거시 코드베이스를 온보딩 1주 내 파악, 독립적으로 기능 개발 착수</li>
+                <li><strong>AI 도구 활용 초고속 온보딩:</strong> React 실무 경험이 부족했지만 <strong>Cursor AI</strong>를 적극 활용해 대규모 레거시 코드베이스를 1주 내 파악, 독립적으로 기능 개발 착수, 성과를 인정받아 계약 연장 제안을 받음</li>
                 <li><strong>풀스택 구현:</strong> 시스템 메일 템플릿·표준계약서 관리 기능을 백엔드·프론트엔드 모두 설계 및 구현</li>
               </ul>
             </div>
@@ -1965,11 +1907,11 @@
           </div>
           <div class="proj-top">
             <div class="proj-type">🌟 개인 프로젝트</div>
-            <div class="proj-name">CONNN — 웹 음성채팅 서비스</div>
-            <div class="proj-period">2024.03 — 2024.07</div>
+            <div class="proj-name">CONNN · 웹 음성채팅 서비스</div>
+            <div class="proj-period">2024.03 ~ 2024.07</div>
           </div>
           <div class="proj-body">
-            <p class="proj-desc">개인적인 기술 역량 확장과 '게임 유저 간의 실시간 랜선 네트워킹'이라는 순수 흥미로 기획부터 배포까지 단독 구현한 웹 음성채팅 서비스. 클라우드 비용 효율화를 위한 인프라 고민과 CI/CD 경험을 쌓은 핵심 토이 프로젝트</p>
+            <p class="proj-desc">'게임 유저 간의 실시간 랜선 네트워킹'이라는 순수 흥미로, <strong>Cursor AI</strong>를 적극 활용해 3~4개월 만에 기획부터 배포까지 단독 구현한 웹 음성채팅 서비스. 클라우드 비용 효율화를 위한 인프라 고민과 CI/CD 경험을 쌓은 핵심 토이 프로젝트</p>
             <div class="tech-wrap">
               <span class="tech">Node.js</span><span class="tech">React</span><span class="tech">WebRTC</span><span
                 class="tech">MariaDB</span><span class="tech">Linux</span><span class="tech">GitHub Actions</span>
@@ -1983,7 +1925,7 @@
               <ul class="exp-ul">
                 <li><strong>WebRTC P2P 기반 통신 최적화:</strong> 개인 서버(클라우드)의 네트워크 트래픽 과금과 부하를 최소화하기 위해 중앙 서버를 생략하고 클라이언트(Peer) 간에 직접 음성 데이터를 교환하는 WebRTC P2P 아키텍처 설계 및 구현</li>
                 <li><strong>CI/CD 자동 배포 파이프라인:</strong> GitHub Actions를 도입하여, git 레포지토리에 소스코드가 푸시되면 클라우드 서버에 바로 반영되는 무중단 자동 배포 파이프라인 단독 구축</li>
-                <li><strong>풀스택 서비스 런칭 및 운영:</strong> 가비아 클라우드 서버 렌탈, 외부 도메인 연결 설정부터 Node.js/React 기반의 웹 서비스 풀스택 개발까지 1인 사이드 프로젝트의 A-Z 전체 사이클 주도적 경험</li>
+                <li><strong>AI 도구 기반 풀스택 서비스 런칭 및 운영:</strong> <strong>Cursor AI</strong>를 적극 활용해 3~4개월 만에 가비아 클라우드 서버 렌탈, 유료 도메인 구입 및 연결 설정부터 Node.js/React 기반의 웹 서비스 풀스택 개발까지 1인 사이드 프로젝트의 A-Z 전체 사이클 주도적 경험</li>
               </ul>
             </div>
             <a href="https://github.com/jjongmae/connn-app" target="_blank" class="proj-link">🐱 GitHub →</a>
@@ -2002,7 +1944,7 @@
           <div class="proj-top">
             <div class="proj-type">이노뎁 · 지자체 프로젝트</div>
             <div class="proj-name">둔치주차장 침수 알림 시스템</div>
-            <div class="proj-period">2020.01 — 2020.12</div>
+            <div class="proj-period">2020.01 ~ 2020.12</div>
           </div>
           <div class="proj-body">
             <p class="proj-desc">태풍·홍수 경보 시 하천 변 둔치주차장의 침수 위험을 실시간 감지하여 차주에게 자동 SMS를 발송하고, 차단기·전광판·스피커를 원격 제어해 차량 피해를 예방하는 지자체 긴급 알림 시스템</p>
@@ -2038,7 +1980,7 @@
           <div class="proj-top">
             <div class="proj-type">이노뎁 · 영상 감시 솔루션</div>
             <div class="proj-name">TYBIS</div>
-            <div class="proj-period">2015.07 — 2017.12</div>
+            <div class="proj-period">2015.07 ~ 2017.12</div>
           </div>
           <div class="proj-body">
             <p class="proj-desc">대규모 영상 관제 인프라를 위한 C++ 기반 1세대 VMS(Video Management System) 솔루션. 다양한 제조사의 IP 카메라 및 보안 장비를 하나의 플랫폼에서 통합 관리하고 실시간 영상 스트리밍 및 녹화 데이터를 처리하는 시스템</p>
@@ -2094,7 +2036,7 @@
           <h3>단순함의 가치를 아는 개발자, 최종민입니다.</h3>
           <p>
             복잡한 설계보다 단단한 구현을, 막연한 고민보다 확실한 실행을 지향합니다.<br>
-            12년의 현장 경험을 통해 배운 것은, 결국 본질에 집중한 단순함이 가장 강력하다는 사실입니다.<br>
+            11년의 현장 경험을 통해 배운 것은, 결국 본질에 집중한 단순함이 가장 강력하다는 사실입니다.<br>
             제 기술이 귀사의 프로덕트에 실질적인 가치를 더하는 과정을 보여드리고 싶습니다.
           </p>
           <a href="mailto:whdals0119@naver.com" class="cta-btn">이메일 보내기 →</a>
